@@ -85,7 +85,7 @@ function setVignette() {
 // Cette fonction va sauvegarder la liste des vignettes dans un fichier `./data.json`
 function saveInfile() {
     fs.writeFile('data.json', JSON.stringify(vignettes), ()=>{
-        console.log('saved');
+        console.log('les informations ont été sauvegardées dans ./data.json');
     });
 }
 
@@ -95,6 +95,7 @@ function saveInfile() {
 // et dans le callback on fait appelle à la fonction getElement pour récupérer les structres et les titres
 // avant de sauvegarder le tout dans un fichier avec la fonction `saveInfile()`
 const url = 'https://avisjournaux.com/';
+console.log('scrapping '+url+'...');
 request(url, (error, response, html) => {
     if (response.statusCode === 200) {
         getElement(html, '.structure');
